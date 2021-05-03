@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Flag
+  - Ball
+  - Wall
+  - Key
+  - Wall2
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ public class Move2D : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public bool isGrounded = false;
+    bool facingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,17 @@ public class Move2D : MonoBehaviour
         Jump();
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * moveSpeed;
+
+        float move = Input.GetAxis("Horizontal");
+
+        if(move<0 && facingRight)
+        {
+            Flip();
+        }
+        else if(move>0 && !facingRight)
+        {
+            Flip();
+        }
     }
 
     void Jump()
@@ -28,5 +40,11 @@ public class Move2D : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 10f), ForceMode2D.Impulse);
         }
         
+    }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f, -180f, 0f);
     }
 }
