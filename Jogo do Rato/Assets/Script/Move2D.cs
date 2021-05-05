@@ -5,9 +5,13 @@ using UnityEngine;
 public class Move2D : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public GameObject venceuTab;
     public bool isGrounded = false;
     bool facingRight = true;
 
+
+    CoinScript coin;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,13 @@ public class Move2D : MonoBehaviour
         {
             Flip();
         }
+
+        if (ScoreTextScript.coinAmount == 2)
+        {
+            venceuTab.gameObject.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        
     }
 
     void Jump()
